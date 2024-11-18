@@ -7,22 +7,24 @@
 
 body {
   min-height: 100vh;
-  min-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
-  font-family: "Quicksand", sans-serif;
+  padding: 20px; /* Reduced padding for smaller screens */
+  font-family: "Poppins", sans-serif;
   background: hsl(0, 0%, 95%);
 }
 
 .accordion {
-  width: 400px;
+  width: 100%;
+  max-width: 400px; /* Maximum width for larger screens */
+  margin: 0 auto; /* Centering on larger screens */
 }
 
 .accordion input {
   display: none;
 }
+
 .accordion-item {
   --hue: 205;
   --title-color: hsl(var(--hue), 90%, 20%);
@@ -39,7 +41,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
   border: 1px solid transparent;
   border-radius: 10px;
   box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.06);
@@ -56,7 +58,7 @@ body {
 }
 
 .accordion-title {
-  font-size: 20px;
+  font-size: 18px; /* Reduced font size for smaller screens */
   font-weight: 700;
   color: var(--title-color);
 }
@@ -79,14 +81,65 @@ body {
 .item-2 {
   --hue: 260;
 }
+
 .item-3 {
   --hue: 330;
 }
+
 .item-4 {
   --hue: 100;
 }
+
 :is(#item-1, #item-2, #item-3, #item-4):checked
   + .accordion-item
   .accordion-body {
   height: 120px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  /* For tablets and smaller screens */
+  .accordion {
+    padding: 10px;
+  }
+
+  .accordion-head {
+    padding: 12px; /* Adjust padding */
+  }
+
+  .accordion-title {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .accordion-icon {
+    font-size: 24px; /* Smaller icons */
+  }
+}
+
+@media (max-width: 480px) {
+  /* For mobile screens */
+  body {
+    padding: 10px;
+  }
+
+  .accordion {
+    width: 100%; /* Take full width on small screens */
+    max-width: 100%; /* Ensure full width */
+  }
+
+  .accordion-head {
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  .accordion-title {
+    font-size: 14px; /* Further reduce font size */
+  }
+
+  .accordion-icon {
+    font-size: 20px; /* Smaller icons on mobile */
+  }
+
+  .accordion-text {
+    padding: 10px; /* Less padding on mobile */
+  }
 }
